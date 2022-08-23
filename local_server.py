@@ -1,3 +1,8 @@
+"""
+TODO
+    1. make the server run in the background
+"""
+
 import socket
 import contextlib
 
