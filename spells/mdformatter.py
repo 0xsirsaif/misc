@@ -34,6 +34,8 @@ def formatter(src_file: pathlib.Path):
             elif line == "-":
                 all_lines[-1] += "\n"
                 line = "\\- "
+            elif "#B#" in line:
+                line = f"<b> {line.strip('#B#')} </b>"
             all_lines.append(line + "<br>" + "\n")
 
     return all_lines
@@ -51,10 +53,11 @@ def closing(out_file: pathlib.Path, all_lines: list, meta: dict):
     - Add opening and closing <div dir="rtl"></div>
     - Add Image
     - Iterate over the output file and append "\n" to each "\\- <br>"
+    - remove <br> from each <b></b>
     """
 
     def _add_frontmatter(title, description, date):
-        return f"+++\ntitle = {title}\ndescription = {description}\ndate = {date}\n"
+        return f"+++\ntitle = {title}\ndescription = {description}\ndate = {date}\n+++\n"
 
     new_lines = (
         [_add_frontmatter(**meta), '\n<div dir="rtl">\n\n']
@@ -66,6 +69,8 @@ def closing(out_file: pathlib.Path, all_lines: list, meta: dict):
     for i in range(len(new_lines)):
         if new_lines[i] == "\\- <br>\n":
             new_lines[i] += "\n"
+        if "<b>" in new_lines[i]:
+            new_lines[i] = new_lines[i].replace("<br>", "")
 
     with open(out_file, "wt") as fw:
         for line in new_lines:
