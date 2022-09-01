@@ -1,4 +1,9 @@
 """
+TODO (use cases):
+- no image
+- move the output file directly to the blog directory.
+- return access token
+
 A Command-line tool to reformatting a plain-text into Markdown, and then publish to my blog
 
 ** API Design **
@@ -57,7 +62,9 @@ def closing(out_file: pathlib.Path, all_lines: list, meta: dict):
     """
 
     def _add_frontmatter(title, description, date):
-        return f"+++\ntitle = {title}\ndescription = {description}\ndate = {date}\n+++\n"
+        return (
+            f"+++\ntitle = {title}\ndescription = {description}\ndate = {date}\n+++\n"
+        )
 
     new_lines = (
         [_add_frontmatter(**meta), '\n<div dir="rtl">\n\n']
