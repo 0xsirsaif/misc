@@ -2,6 +2,7 @@ import string
 
 BASE62 = string.ascii_letters + string.digits
 
+
 def encode(num, alphabet=BASE62):
     """Encode a positive number in Base X
 
@@ -18,7 +19,8 @@ def encode(num, alphabet=BASE62):
         num = num // base
         arr.append(alphabet[rem])
     arr.reverse()
-    return ''.join(arr)
+    return "".join(arr)
+
 
 def decode(text, alphabet=BASE62):
     """Decode a Base X encoded text into the number
@@ -33,8 +35,8 @@ def decode(text, alphabet=BASE62):
 
     idx = 0
     for char in text:
-        power = (strlen - (idx + 1))
-        num += alphabet.index(char) * (base ** power)
+        power = strlen - (idx + 1)
+        num += alphabet.index(char) * (base**power)
         idx += 1
 
     return num

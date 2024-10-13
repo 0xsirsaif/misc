@@ -114,6 +114,7 @@ def equal(arr: List[int]) -> int:
 
     return min(possibilities)
 
+
 print(equal([2, 2, 3, 7]))
 
 
@@ -143,7 +144,9 @@ def equal_2(arr: List[int]) -> int:
 
     # Calculate the number of steps required for each possible value
     # [2, 2, 1, 1, 0]
-    possibilities = [diff // 5 + (diff % 5) // 2 + (diff % 5) % 2 for diff in differences]
+    possibilities = [
+        diff // 5 + (diff % 5) // 2 + (diff % 5) % 2 for diff in differences
+    ]
 
     # Return the minimum number of steps required
     return min(possibilities)
@@ -176,15 +179,14 @@ def cat_and_mouse(cat_a_pos: int, cat_b_pos: int, mouse_pos: int) -> str:
 
 
 def bonAppetit(bill, k, b):
-    """
-
-    """
+    """ """
     annaBill = sum(it for idx, it in enumerate(bill) if idx != k)
 
     if annaBill // 2 == b:
         print("Bon Appetit")
     else:
         print(b - annaBill // 2)
+
 
 # bonAppetit([3, 10, 2, 9], 1, 12)
 # bonAppetit([3, 10, 2, 9], 1, 7)
@@ -213,4 +215,3 @@ def compareTriplets(a, b):
         elif alice_score < bob_score:
             bob_total_score += 1
     return [alice_total_score, bob_total_score]
-

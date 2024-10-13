@@ -85,7 +85,6 @@ print("===================")
 # print(result)
 
 
-
 def count_weeks_and_remaining_range(start_date, end_date):
     week_duration = timedelta(days=7)
     weeks_count = 0

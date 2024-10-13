@@ -29,6 +29,7 @@ def merge_sort(arr):
 
     return sorted_array
 
+
 def merge(left, right):
     result = []
     i = j = 0

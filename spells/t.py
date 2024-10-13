@@ -5,4 +5,3 @@ from dataclasses import dataclass
 class A:
     all_repos = set()
     b: int = 0
-

@@ -55,7 +55,7 @@ def is_anagram(s: str, t: str) -> bool:
         return False
 
     s_dict: Dict[str, int] = {}
-    t_dict: Dict[str: int] = {}
+    t_dict: Dict[str:int] = {}
 
     for s_char in s:
         s_dict[s_char] = s_dict.get(s_char, 0) + 1
@@ -98,7 +98,10 @@ def invert_binary_tree_iterative(tree: list) -> list:
     for idx in range(len(tree) // 2):
         left_child_idx = 2 * idx + 1
         right_child_idx = 2 * idx + 2
-        tree[left_child_idx], tree[right_child_idx] = tree[right_child_idx], tree[left_child_idx]
+        tree[left_child_idx], tree[right_child_idx] = (
+            tree[right_child_idx],
+            tree[left_child_idx],
+        )
 
     return tree
 
@@ -122,7 +125,9 @@ class TreeNode:
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if root:
-            root.left, root.right = self.invertTree(root.right), self.invertTree(root.left)
+            root.left, root.right = self.invertTree(root.right), self.invertTree(
+                root.left
+            )
             return root
         # base condition
         return None
@@ -164,7 +169,5 @@ def can_construct(ransomNote: str, magazine: str) -> bool:
     return True
 
 
-
 if __name__ == "__main__":
     print("Hello!")
-
